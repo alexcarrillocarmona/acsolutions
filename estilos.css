@@ -1,0 +1,682 @@
+/* 
+   AC Solutions - styles.css 2026
+   Diseño de Alta Tecnología, Minimalista e Interactivo.
+*/
+
+:root {
+    --vinotinto: #6B1D38;        /* Vinotinto principal */
+    --vinotinto-glow: #8e2b4f;   /* Vinotinto más brillante para efectos de luz */
+    --negro: #080808;             /* Negro más profundo y premium */
+    --negro-secondary: #111111;  /* Un negro ligeramente más claro para contraste */
+    --blanco: #ffffff;
+    --gris-claro: #fcfcfc;       /* Gris de fondo muy limpio */
+    --gris-hover: #f1f1f1;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--negro);
+    background-color: var(--blanco);
+    overflow-x: hidden; /* Evitar barras de desplazamiento extrañas con animaciones */
+}
+
+/* --- Navbar (Menú Superior) --- */
+.navbar {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.navbar-brand img {
+    max-height: 55px;
+    mix-blend-mode: multiply; 
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.03); /* Sutil crecimiento al pasar el ratón */
+}
+
+.nav-link {
+    color: var(--negro) !important;
+    font-weight: 600; /* Ligeramente más grueso para más presencia */
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.8rem 1rem !important; /* Más padding para clic fácil */
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--vinotinto) !important;
+}
+
+/* Indicador de Menú Animado 2026 (con glow) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -3px; /* Justo debajo de la línea de texto */
+    left: 10%; /* Centrado sutilmente */
+    background-color: var(--vinotinto);
+    transition: width 0.3s ease-out;
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--vinotinto-glow); /* Efecto de resplandor (glow) */
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* --- Carrusel Moderno --- */
+.carousel-item {
+    height: 70vh; /* Un poco más alto para mayor impacto */
+    min-height: 500px;
+    background: var(--negro);
+}
+
+.carousel-item img {
+    object-fit: cover;
+    opacity: 0.55; /* Oscurecemos un poco más para que resalte el texto */
+    height: 100%;
+    width: 100%;
+    transition: transform 10s ease-out; /* Sutil zoom-in automático */
+}
+
+.carousel-item.active img {
+    transform: scale(1.1); /* Efecto Ken Burns sutil */
+}
+
+.carousel-caption {
+    bottom: 40%;
+    z-index: 10;
+}
+
+.carousel-caption h2 {
+    font-weight: 800; /* Muy negrita */
+    font-size: 3rem;   /* Más grande */
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.carousel-caption p {
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+    transform: translateY(10px);
+    opacity: 0;
+    transition: transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s;
+}
+
+/* Animar la leyenda del carrusel cuando se activa el slide */
+.carousel-item.active .carousel-caption h2,
+.carousel-item.active .carousel-caption p {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Controles del carrusel más elegantes */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: var(--vinotinto);
+}
+
+/* --- Sección de Descripción Principal --- */
+.main-description {
+    padding: 120px 0; /* Más aire para un diseño premium */
+    background-color: var(--blanco); /* Fondo limpio */
+    position: relative; /* Para el canvas de partículas */
+    z-index: 1;
+}
+
+/* Canvas de Partículas (Estilo JS) */
+.tech-particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Detrás del contenido */
+}
+
+.main-description h1 {
+    color: var(--negro); /* Título en negro profundo */
+    font-weight: 800;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    letter-spacing: -1px; /* Espaciado más moderno */
+}
+
+.main-description h1 strong {
+    color: var(--vinotinto); /* Acentuamos solo el nombre */
+}
+
+.main-description .lead {
+    font-size: 1.4rem;
+    color: rgba(8, 8, 8, 0.7); /* Un negro más suave */
+    margin-bottom: 30px;
+}
+
+.main-description p:last-of-type {
+    font-size: 1.15rem;
+    color: rgba(8, 8, 8, 0.6);
+}
+
+/* Insignias de Tecnología (Tech Badges) Interactivas 2026 */
+.tech-badge {
+    background-color: var(--negro);
+    color: var(--blanco);
+    padding: 12px 28px; /* Un poco más de padding */
+    border-radius: 6px;  /* Menos redondeado para un look más preciso */
+    font-weight: 600;
+    display: inline-block;
+    margin: 8px;
+    font-size: 1.1rem;
+    position: relative;
+    transition: all 0.4s ease-out, transform 0.2s ease-out; /* JS maneja transform */
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Efecto de resplandor al pasar el ratón (glow) */
+.tech-badge:hover {
+    color: var(--blanco);
+    background-color: var(--vinotinto);
+    box-shadow: 0 0 25px var(--vinotinto-glow); /* Efecto de luz */
+}
+
+/* --- Footer y Redes Sociales --- */
+footer {
+    background-color: var(--negro);
+    color: var(--blanco);
+    padding: 60px 0;
+    position: relative;
+    z-index: 1;
+}
+
+footer p.mb-3 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.5px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.social-icons a {
+    color: rgba(255, 255, 255, 0.8); /* Un blanco más suave */
+    font-size: 2.2rem;
+    margin: 0 18px;
+    transition: all 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+/* Sutil efecto de luz en redes sociales */
+.social-icons a:hover {
+    color: var(--vinotinto-glow);
+    transform: translateY(-8px) scale(1.1);
+}
+
+.small.text-muted {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 0.9rem;
+}
+
+/* --- Clases de Animación en el Desplazamiento (Utilizadas por JS) --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px); /* Sutil slide-up */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Adaptación a Dispositivos Móviles (Responsive) --- */
+@media (max-width: 991px) {
+    .navbar-brand img {
+        max-height: 50px;
+    }
+    
+    .carousel-item {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .carousel-caption h2 {
+        font-size: 2.2rem;
+    }
+    
+    .main-description h1 {
+        font-size: 2.8rem;
+    }
+    
+    .main-description {
+        padding: 80px 0;
+    }
+    
+    .social-icons a {
+        font-size: 1.8rem;
+        margin: 0 12px;
+    }
+}
+
+/* =========================================
+   ESTILOS PARA LA PÁGINA "QUIÉNES SOMOS"
+   ========================================= */
+
+.text-vinotinto {
+    color: var(--vinotinto);
+}
+
+.page-header {
+    background-color: var(--gris-claro);
+    padding: 80px 0 50px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.team-section {
+    background-color: var(--blanco);
+}
+
+.team-card {
+    background: var(--blanco);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    height: 100%;
+    border: 1px solid transparent;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(107, 29, 56, 0.1); /* Sombra vinotinto sutil */
+    border-color: rgba(107, 29, 56, 0.1);
+}
+
+.team-img-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--gris-claro); /* Fondo por si la imagen es PNG transparente */
+    aspect-ratio: 3/4; /* Mantiene una proporción uniforme para las fotos */
+}
+
+.team-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top; /* Centra las caras hacia arriba */
+    transition: transform 0.6s ease;
+}
+
+.team-card:hover .team-img-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Capa que aparece al hacer hover sobre la imagen */
+.team-social-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(8, 8, 8, 0.8), rgba(107, 29, 56, 0.2));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.team-card:hover .team-social-overlay {
+    opacity: 1;
+}
+
+.team-social-overlay a {
+    color: var(--blanco);
+    font-size: 1.8rem;
+    margin: 0 10px;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.team-card:hover .team-social-overlay a {
+    transform: translateY(0);
+}
+
+.team-social-overlay a:hover {
+    color: var(--vinotinto-glow);
+    transform: scale(1.2);
+}
+
+.role-badge {
+    display: inline-block;
+    background-color: var(--vinotinto);
+    color: var(--blanco);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   ESTILOS PARA LA PÁGINA "NUESTROS SERVICIOS"
+   ========================================= */
+
+.services-detail {
+    background-color: var(--blanco);
+}
+
+.service-tag {
+    background-color: rgba(107, 29, 56, 0.1);
+    color: var(--vinotinto);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+.feature-icon-sm {
+    background-color: var(--vinotinto);
+    color: var(--blanco);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(107, 29, 56, 0.3);
+}
+
+/* Panel del Ecosistema Técnico */
+.tech-ecosystem-card {
+    background: var(--gris-claro);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.tech-box {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-bottom: 3px solid transparent;
+    height: 100%;
+}
+
+.tech-box:hover {
+    transform: translateY(-5px);
+    border-bottom-color: var(--vinotinto);
+    box-shadow: 0 12px 25px rgba(107, 29, 56, 0.08);
+}
+
+.tech-box h5 {
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+/* Tarjetas de Metodología (Workflow) */
+.step-card {
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 35px 25px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.01);
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.step-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(107, 29, 56, 0.1); /* Efecto translúcido vinotinto */
+    line-height: 1;
+    transition: color 0.4s ease;
+}
+
+.step-card:hover {
+    background-color: var(--negro);
+}
+
+.step-card:hover .step-number {
+    color: var(--vinotinto-glow);
+}
+
+.step-card:hover h5 {
+    color: var(--blanco);
+}
+
+.step-card:hover p {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* =========================================
+   ESTILOS PARA LA PÁGINA "EQUIPO DE DESARROLLO"
+   ========================================= */
+
+.tech-capabilities {
+    background-color: var(--blanco);
+}
+
+/* Contenedores de las barras de progreso personalizadas */
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background-color: var(--gris-hover);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--vinotinto), var(--vinotinto-glow));
+    border-radius: 10px;
+    box-shadow: 0 0 8px var(--vinotinto-glow);
+}
+
+/* Caja de Garantía Tecnológica (Look Minimalista-Futurista) */
+.guarantee-box {
+    background-color: var(--negro-secondary);
+    color: var(--blanco);
+    padding: 40px;
+    border-radius: 16px;
+    border-left: 4px solid var(--vinotinto);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.icon-box-md {
+    background-color: rgba(107, 29, 56, 0.2);
+    color: var(--vinotinto-glow);
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* Tarjetas de Desarrolladores */
+.dev-card {
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+}
+
+.dev-icon-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--gris-claro);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 2.2rem;
+    border: 1px solid rgba(107, 29, 56, 0.1);
+    transition: all 0.4s ease;
+}
+
+/* Interacciones Modernas */
+.dev-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+    border-color: rgba(107, 29, 56, 0.15);
+}
+
+.dev-card:hover .dev-icon-avatar {
+    background-color: var(--vinotinto);
+    color: var(--blanco) !important;
+    box-shadow: 0 0 20px var(--vinotinto-glow);
+}
+
+.dev-card:hover .dev-icon-avatar i {
+    color: var(--blanco) !important;
+}
+
+.tracking-wider {
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   ESTILOS PARA LA PÁGINA "CONTACTO"
+   ========================================= */
+
+.contact-section {
+    background-color: var(--blanco);
+}
+
+/* Tarjetas de canales individuales */
+.contact-channel-card {
+    display: flex;
+    align-items: center;
+    background: var(--gris-claro);
+    border: 1px solid rgba(0,0,0,0.02);
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none !important;
+    color: inherit !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.contact-channel-card:hover {
+    transform: translateX(8px);
+    background: var(--blanco);
+    box-shadow: 0 10px 25px rgba(107, 29, 56, 0.06);
+    border-color: rgba(107, 29, 56, 0.1);
+}
+
+/* Iconos circulares con colores de marca */
+.channel-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: var(--blanco);
+    flex-shrink: 0;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.contact-channel-card:hover .channel-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Colores de fondo de redes sociales */
+.whatsapp-bg { background-color: #25D366; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); }
+.instagram-bg { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); box-shadow: 0 4px 12px rgba(131, 58, 180, 0.2); }
+.facebook-bg { background-color: #1877F2; box-shadow: 0 4px 12px rgba(24, 119, 242, 0.2); }
+.email-bg { background-color: var(--vinotinto); box-shadow: 0 4px 12px rgba(107, 29, 56, 0.2); }
+
+.channel-details h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.channel-details p {
+    margin-bottom: 4px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.action-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--vinotinto);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Contenedor del Formulario */
+.contact-form-container {
+    background-color: var(--blanco);
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.01);
+}
+
+/* Input flotante personalizado */
+.custom-input {
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    border-radius: 8px !important;
+    background-color: var(--gris-claro) !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom-input:focus {
+    border-color: var(--vinotinto) !important;
+    background-color: var(--blanco) !important;
+    box-shadow: 0 0 0 0.25rem rgba(107, 29, 56, 0.15) !important;
+}
+
+/* Botón de envío estilizado */
+.btn-send-project {
+    background-color: var(--negro);
+    color: var(--blanco);
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.btn-send-project:hover {
+    background-color: var(--vinotinto);
+    color: var(--blanco);
+    box-shadow: 0 5px 20px var(--vinotinto-glow);
+    transform: translateY(-2px);
+}
